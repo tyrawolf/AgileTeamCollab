@@ -87,5 +87,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AgileTeamCollabLibrary\AgileTeamCollabLibrary.csproj">
+      <Project>{043a4cf9-871e-4b41-90e0-9707023500fa}</Project>
+      <Name>AgileTeamCollabLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

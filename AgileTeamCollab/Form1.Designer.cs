@@ -36,10 +36,6 @@
             this.QtyBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HargaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kd_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.dgv2 = new System.Windows.Forms.DataGridView();
             this.lblPajak = new System.Windows.Forms.Label();
@@ -50,6 +46,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.kd_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -118,26 +118,6 @@
             this.NamaBarang.HeaderText = "Nama";
             this.NamaBarang.Name = "NamaBarang";
             // 
-            // Pajak
-            // 
-            this.Pajak.HeaderText = "Pajak";
-            this.Pajak.Name = "Pajak";
-            // 
-            // Harga
-            // 
-            this.Harga.HeaderText = "Harga";
-            this.Harga.Name = "Harga";
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            // 
-            // kd_barang
-            // 
-            this.kd_barang.HeaderText = "kd_barang";
-            this.kd_barang.Name = "kd_barang";
-            // 
             // btnGenerate
             // 
             this.btnGenerate.Location = new System.Drawing.Point(509, 425);
@@ -182,6 +162,8 @@
             // 
             // dgv1
             // 
+            this.dgv1.AllowUserToAddRows = false;
+            this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.kd_barang,
@@ -191,6 +173,7 @@
             this.dgv1.Location = new System.Drawing.Point(16, 39);
             this.dgv1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv1.Name = "dgv1";
+            this.dgv1.ReadOnly = true;
             this.dgv1.Size = new System.Drawing.Size(892, 240);
             this.dgv1.TabIndex = 16;
             // 
@@ -242,6 +225,30 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Jenis Barang : ";
             // 
+            // kd_barang
+            // 
+            this.kd_barang.HeaderText = "kd_barang";
+            this.kd_barang.Name = "kd_barang";
+            this.kd_barang.ReadOnly = true;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // Harga
+            // 
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            this.Harga.ReadOnly = true;
+            // 
+            // Pajak
+            // 
+            this.Pajak.HeaderText = "Pajak (%)";
+            this.Pajak.Name = "Pajak";
+            this.Pajak.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,9 +269,14 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmTampilan";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.ResumeLayout(false);
@@ -282,10 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyBarang;
         private System.Windows.Forms.DataGridViewTextBoxColumn HargaBarang;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaBarang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pajak;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kd_barang;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.DataGridView dgv2;
         private System.Windows.Forms.Label lblPajak;
@@ -296,6 +304,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kd_barang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pajak;
     }
 }
 
