@@ -16,5 +16,10 @@ namespace AgileTeamCollab
         {
             InitializeComponent();
         }
+
+        private void btnSimpan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
