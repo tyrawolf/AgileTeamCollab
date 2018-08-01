@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnAddPembelian = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -48,34 +48,39 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
+            // btnRefresh
             // 
-            this.button3.Location = new System.Drawing.Point(606, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRefresh.Location = new System.Drawing.Point(808, 5);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 28);
+            this.btnRefresh.TabIndex = 25;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
-            // btnAddPembelian
+            // btnReset
             // 
-            this.btnAddPembelian.Location = new System.Drawing.Point(382, 374);
-            this.btnAddPembelian.Name = "btnAddPembelian";
-            this.btnAddPembelian.Size = new System.Drawing.Size(51, 23);
-            this.btnAddPembelian.TabIndex = 23;
-            this.btnAddPembelian.Text = "Add";
-            this.btnAddPembelian.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(509, 460);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(115, 28);
+            this.btnReset.TabIndex = 23;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(475, 296);
+            this.label3.Location = new System.Drawing.Point(633, 364);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 13);
+            this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 22;
             this.label3.Text = "%";
             // 
@@ -83,17 +88,19 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(379, 322);
+            this.lblTotal.Location = new System.Drawing.Point(505, 396);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(44, 13);
+            this.lblTotal.Size = new System.Drawing.Size(55, 17);
             this.lblTotal.TabIndex = 21;
             this.lblTotal.Text = "Total :";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(429, 319);
+            this.textBox2.Location = new System.Drawing.Point(572, 393);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 20;
             // 
             // QtyBarang
@@ -133,9 +140,10 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(382, 345);
+            this.btnGenerate.Location = new System.Drawing.Point(509, 425);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(87, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(116, 28);
             this.btnGenerate.TabIndex = 24;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -147,26 +155,29 @@
             this.NamaBarang,
             this.HargaBarang,
             this.QtyBarang});
-            this.dgv2.Location = new System.Drawing.Point(12, 293);
+            this.dgv2.Location = new System.Drawing.Point(16, 361);
+            this.dgv2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv2.Name = "dgv2";
-            this.dgv2.Size = new System.Drawing.Size(356, 150);
+            this.dgv2.Size = new System.Drawing.Size(475, 185);
             this.dgv2.TabIndex = 19;
             // 
             // lblPajak
             // 
             this.lblPajak.AutoSize = true;
             this.lblPajak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPajak.Location = new System.Drawing.Point(379, 296);
+            this.lblPajak.Location = new System.Drawing.Point(505, 364);
+            this.lblPajak.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPajak.Name = "lblPajak";
-            this.lblPajak.Size = new System.Drawing.Size(47, 13);
+            this.lblPajak.Size = new System.Drawing.Size(58, 17);
             this.lblPajak.TabIndex = 18;
             this.lblPajak.Text = "Pajak :";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(429, 293);
+            this.textBox1.Location = new System.Drawing.Point(572, 361);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(40, 20);
+            this.textBox1.Size = new System.Drawing.Size(52, 22);
             this.textBox1.TabIndex = 17;
             // 
             // dgv1
@@ -177,45 +188,69 @@
             this.Nama,
             this.Harga,
             this.Pajak});
-            this.dgv1.Location = new System.Drawing.Point(12, 32);
+            this.dgv1.Location = new System.Drawing.Point(16, 39);
+            this.dgv1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv1.Name = "dgv1";
-            this.dgv1.Size = new System.Drawing.Size(669, 195);
+            this.dgv1.Size = new System.Drawing.Size(892, 240);
             this.dgv1.TabIndex = 16;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(128, 3);
+            this.btnEdit.Location = new System.Drawing.Point(171, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(58, 23);
+            this.btnEdit.Size = new System.Drawing.Size(77, 28);
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(70, 3);
+            this.btnDelete.Location = new System.Drawing.Point(93, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(52, 23);
+            this.btnDelete.Size = new System.Drawing.Size(69, 28);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(13, 3);
+            this.btnAdd.Location = new System.Drawing.Point(17, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(51, 23);
+            this.btnAdd.Size = new System.Drawing.Size(68, 28);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 340);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Daftar Belanja :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(367, 340);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 17);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Jenis Barang : ";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnAddPembelian);
+            this.ClientSize = new System.Drawing.Size(916, 552);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.textBox2);
@@ -227,6 +262,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "FrmTampilan";
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
@@ -238,8 +274,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnAddPembelian;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox textBox2;
@@ -258,6 +294,8 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
