@@ -92,6 +92,30 @@ namespace AgileTeamCollabLibrary
             return result;
         }
 
+        public int Delete(string kode)
+        {
+            int result = 0;
+            try
+            {
+               
+                string sqlString = @"delete barang where Kode = @kode";
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = sqlString;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", kode);
+
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
         public void Dispose()
         {
             if (conn != null)

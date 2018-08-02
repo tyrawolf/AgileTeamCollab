@@ -35,16 +35,22 @@ namespace AgileTeamCollab
         private void btnConfirm_Click(object sender, EventArgs e)
         {
 
-            if (Int32.Parse(txtQty.Text) < 0)
+            if (txtQty.Text.Trim() == "")
+            {
+                MessageBox.Show("Tolong isi kuantitasnya", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else if  (Int32.Parse(txtQty.Text) < 0)
             {
                 MessageBox.Show("Tidak boleh minus", this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
                 qty = Int32.Parse(txtQty.Text);
+                this.Close();
             }
             
-            this.Close();
+            
         }
     }
 }
