@@ -35,6 +35,9 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.dgv2 = new System.Windows.Forms.DataGridView();
+            this.NamaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HargaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblPajak = new System.Windows.Forms.Label();
             this.txtPajakAkhir = new System.Windows.Forms.TextBox();
             this.dgv1 = new System.Windows.Forms.DataGridView();
@@ -47,9 +50,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblJlhBrg = new System.Windows.Forms.Label();
-            this.NamaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HargaBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtyBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +133,24 @@
             this.dgv2.Size = new System.Drawing.Size(475, 185);
             this.dgv2.TabIndex = 19;
             // 
+            // NamaBarang
+            // 
+            this.NamaBarang.HeaderText = "Nama";
+            this.NamaBarang.Name = "NamaBarang";
+            this.NamaBarang.ReadOnly = true;
+            // 
+            // HargaBarang
+            // 
+            this.HargaBarang.HeaderText = "Harga/pcs";
+            this.HargaBarang.Name = "HargaBarang";
+            this.HargaBarang.ReadOnly = true;
+            // 
+            // QtyBarang
+            // 
+            this.QtyBarang.HeaderText = "Qty";
+            this.QtyBarang.Name = "QtyBarang";
+            this.QtyBarang.ReadOnly = true;
+            // 
             // lblPajak
             // 
             this.lblPajak.AutoSize = true;
@@ -167,6 +185,7 @@
             this.dgv1.Margin = new System.Windows.Forms.Padding(4);
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
+            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv1.Size = new System.Drawing.Size(688, 240);
             this.dgv1.TabIndex = 16;
             this.dgv1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellDoubleClick);
@@ -204,6 +223,7 @@
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -243,24 +263,6 @@
             this.lblJlhBrg.Size = new System.Drawing.Size(115, 17);
             this.lblJlhBrg.TabIndex = 27;
             this.lblJlhBrg.Text = "Jumlah Barang : ";
-            // 
-            // NamaBarang
-            // 
-            this.NamaBarang.HeaderText = "Nama";
-            this.NamaBarang.Name = "NamaBarang";
-            this.NamaBarang.ReadOnly = true;
-            // 
-            // HargaBarang
-            // 
-            this.HargaBarang.HeaderText = "Harga/pcs";
-            this.HargaBarang.Name = "HargaBarang";
-            this.HargaBarang.ReadOnly = true;
-            // 
-            // QtyBarang
-            // 
-            this.QtyBarang.HeaderText = "Qty";
-            this.QtyBarang.Name = "QtyBarang";
-            this.QtyBarang.ReadOnly = true;
             // 
             // Form1
             // 
