@@ -14,15 +14,19 @@ namespace AgileTeamCollab
     public partial class Form1 : Form
     {
         List<Barang> listBrg = null;
+        List<Belanja> listBelanja = null;
         public Form1()
         {
             InitializeComponent();
             dgv1.AutoGenerateColumns = false;
-            
+            dgv2.AutoGenerateColumns = false;
+            dgv1.ColumnHeadersDefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+            dgv2.ColumnHeadersDefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            listBelanja = new List<Belanja>();
             Form1_Resize(null,null);
             try
             {
@@ -52,6 +56,105 @@ namespace AgileTeamCollab
             this.dgv1.Columns[1].Width = 30 * this.dgv1.Width / 100;
             this.dgv1.Columns[2].Width = 25 * this.dgv1.Width / 100;
             this.dgv1.Columns[3].Width = 25 * this.dgv1.Width / 100;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmAdd().ShowDialog();
+            this.Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            Form1_Load(null,null);
+        }
+
+        private void txtPajakAkhir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            int total = 0;
+            dgv2.Columns[0].DataPropertyName = "Nama";
+            dgv2.Columns[1].DataPropertyName = "Harga";
+            dgv2.Columns[2].DataPropertyName = "Quantity";
+
+            if (dgv1.CurrentCell.ColumnIndex == 0 )
+            {
+                foreach (var item in listBrg)
+                {
+                    if (item.Kode == dgv1.CurrentCell.Value.ToString())
+                    {
+                        int qty = new FrmQuantity().Run();
+                        if (qty != 0)
+                        {
+                            dgv2.DataSource = null;
+                            listBelanja.Add(new Belanja {KodeBarang = item.Kode, Nama = item.Nama, Harga = item.Harga +(item.Harga* (double)item.Pajak/100), Quantity = qty });
+                            dgv2.DataSource = listBelanja;
+                            
+                        }                        
+                    }
+                }
+            }
+
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                total += Int32.Parse(item.Cells[2].Value.ToString()); 
+            }
+            lblJlhBrg.Text = "Jumlah Barang : " + total.ToString();
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtPajakAkhir.Text.Trim() != "")
+                {
+                    double TotalHarga = 0;
+                    foreach (DataGridViewRow item in dgv2.Rows)
+                    {
+                        TotalHarga += (Double.Parse(item.Cells[1].Value.ToString()) * Double.Parse(item.Cells[2].Value.ToString()));
+                    }
+
+                    TotalHarga = TotalHarga + (TotalHarga * Double.Parse(txtPajakAkhir.Text) / 100);
+
+                    txtTotal.Text = TotalHarga.ToString("n0");
+                }
+                else
+                {
+                    MessageBox.Show("Tolong input pajak akhir !", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgv2.DataSource = null;
+                lblJlhBrg.Text = "Jumlah Barang : 0";
+                txtPajakAkhir.Clear();
+                txtTotal.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
