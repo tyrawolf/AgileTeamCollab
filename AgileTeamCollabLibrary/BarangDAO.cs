@@ -9,7 +9,6 @@ namespace AgileTeamCollabLibrary
 {
     public class BarangDAO : IDisposable
     {
-
         SqlConnection conn = null;
 
         public BarangDAO()
@@ -67,95 +66,6 @@ namespace AgileTeamCollabLibrary
             return list;
         }
 
-        public Barang GetDataBarangByKode(string kode)
-        {
-            Barang result = null;
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = @"select * from barang Where kode = @Kode";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@Kode", kode);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            if (reader.Read())
-                            {
-                                result = new Barang
-                                {
-                                    Kode = reader["Kode"].ToString(),
-                                    Nama = reader["Nama"].ToString(),
-                                    Harga = Double.Parse(reader["Harga"].ToString()),
-                                    Pajak = Double.Parse(reader["Pajak"].ToString())
-                                };
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
-
-        public List<Barang> QueryDataBarang(Barang barang)
-        {
-            List<Barang> listData = null;
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    if (barang == null)
-                    {
-                        cmd.CommandText =
-                            @"select * from Barang order by kode";
-                    }
-                    else
-                    {
-                        cmd.CommandText =
-                            @"select b.* from barang b 
-                                where b.kode like @kode and b.nama like @nama and
-                                b.harga like @harga and b.pajak like @pajak 
-                                order by kode";
-                        cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@kode", $"%{barang.Kode}%");
-                        cmd.Parameters.AddWithValue("@nama", $"%{barang.Nama}%");
-                        cmd.Parameters.AddWithValue("@Harga", $"%{barang.Harga}%");
-                        cmd.Parameters.AddWithValue("@Pajak", $"%{barang.Pajak}%");
-                    }
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            listData = new List<Barang>();
-                            while (reader.Read())
-                            {
-                                listData.Add(
-                                    new Barang
-                                    {
-                                        Kode = reader["kode"].ToString(),
-                                        Nama = reader["nama"].ToString(),
-                                        Harga = Double.Parse(reader["harga"].ToString()),
-                                        Pajak = Double.Parse(reader["Pajak"].ToString())
-                                    });
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return listData;
-        }
-
         public int Insert(Barang brg)
         {
             int result = 0;
@@ -182,36 +92,26 @@ namespace AgileTeamCollabLibrary
             return result;
         }
 
-        public int Update(Barang barang)
+        public int Delete(string kode)
         {
             int result = 0;
-            SqlTransaction trans = null;
             try
             {
-                trans = conn.BeginTransaction();
+               
+                string sqlString = @"delete barang where Kode = @kode";
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.Transaction = trans;
-                    cmd.CommandText = @"update barang set kode = @kode, nama = @nama,
-                        harga = @harga, pajak = @pajak where kode = @kode";
+                    cmd.CommandText = sqlString;
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@kode", barang.Kode);
-                    cmd.Parameters.AddWithValue("@nama", barang.Nama);
-                    cmd.Parameters.AddWithValue("@harga", barang.Harga);
-                    cmd.Parameters.AddWithValue("@pajak", barang.Pajak);
+                    cmd.Parameters.AddWithValue("@kode", kode);
+
                     result = cmd.ExecuteNonQuery();
                 }
-                trans.Commit();
             }
             catch (Exception ex)
             {
-                if (trans != null) trans.Rollback();
                 throw ex;
-            }
-            finally
-            {
-                if (trans != null) trans.Dispose();
             }
             return result;
         }
