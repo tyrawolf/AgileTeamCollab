@@ -66,6 +66,32 @@ namespace AgileTeamCollabLibrary
             return list;
         }
 
+        public int Insert(Barang brg)
+        {
+            int result = 0;
+            try
+            {
+
+                string sqlString = @"insert into Barang values (@kode, @nama, @harga, @pajak)";
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = sqlString;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", brg.Kode);
+                    cmd.Parameters.AddWithValue("@nama", brg.Nama);
+                    cmd.Parameters.AddWithValue("@harga", brg.Harga);
+                    cmd.Parameters.AddWithValue("@pajak", brg.Pajak);
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
         public void Dispose()
         {
             if (conn != null)
