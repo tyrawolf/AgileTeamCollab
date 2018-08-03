@@ -76,7 +76,7 @@ namespace AgileTeamCollab
                         Kode = this.txtKode.Text.Trim(),
                         Nama = this.txtNama.Text.Trim(),
                         Harga = Double.Parse(this.txtHarga.Text.Trim()),
-                        Pajak = Double.Parse(this.txtPajak.Text.Trim())
+                        Pajak = Decimal.Parse(this.txtPajak.Text.Trim())
                     };
                     _result = new BarangDAO().Update(barang) > 0;
                     this.Close();

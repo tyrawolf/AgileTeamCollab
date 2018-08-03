@@ -43,7 +43,7 @@ namespace AgileTeamCollabLibrary
                         string kode = reader["Kode"].ToString();
                         string nama = reader["Nama"].ToString();
                         double hrg = Double.Parse(reader["Harga"].ToString());
-                        double pjk = Double.Parse(reader["Pajak"].ToString());
+                        decimal pjk = Decimal.Parse(reader["Pajak"].ToString());
 
                         list.Add(new Barang {
                             Kode = kode,
@@ -176,7 +176,7 @@ namespace AgileTeamCollabLibrary
                                     Kode = reader["Kode"].ToString(),
                                     Nama = reader["Nama"].ToString(),
                                     Harga = Double.Parse(reader["Harga"].ToString()),
-                                    Pajak = Double.Parse(reader["Pajak"].ToString())
+                                    Pajak = Decimal.Parse(reader["Pajak"].ToString())
                                 };
                             }
                         }

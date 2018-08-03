@@ -11,6 +11,6 @@ namespace AgileTeamCollabLibrary
         public string Kode { get; set; }
         public string Nama { get; set; }
         public double Harga { get; set; }
-        public double Pajak { get; set; }
+        public decimal Pajak { get; set; }
     }
 }

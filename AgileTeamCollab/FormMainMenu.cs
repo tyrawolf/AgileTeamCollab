@@ -11,21 +11,27 @@ using AgileTeamCollabLibrary;
 
 namespace AgileTeamCollab
 {
-    public partial class Form1 : Form
+    public partial class FormMainMenu : Form
     {
         List<Barang> listBrg = null;
         List<Belanja> listBelanja = null;
-        public Form1()
+        public FormMainMenu()
         {
             InitializeComponent();
             dgv1.AutoGenerateColumns = false;
             dgv2.AutoGenerateColumns = false;
             dgv1.ColumnHeadersDefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
             dgv2.ColumnHeadersDefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+            dgv1.Columns["Harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv1.Columns["Pajak"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv2.Columns["HargaBarang"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv2.Columns["HargaBarang"].DefaultCellStyle.Format = "n0";
+            dgv1.Columns["Harga"].DefaultCellStyle.Format = "n0";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtSearch.Clear();
             listBelanja = new List<Belanja>();
             Form1_Resize(null, null);
             try
@@ -54,14 +60,19 @@ namespace AgileTeamCollab
 
             this.dgv1.Columns[0].Width = 20 * this.dgv1.Width / 100;
             this.dgv1.Columns[1].Width = 30 * this.dgv1.Width / 100;
-            this.dgv1.Columns[2].Width = 25 * this.dgv1.Width / 100;
-            this.dgv1.Columns[3].Width = 25 * this.dgv1.Width / 100;
+            this.dgv1.Columns[2].Width = 24 * this.dgv1.Width / 100;
+            this.dgv1.Columns[3].Width = 20 * this.dgv1.Width / 100;
+
+            this.dgv2.Columns[0].Width = 30 * this.dgv1.Width / 100;
+            this.dgv2.Columns[1].Width = 24 * this.dgv1.Width / 100;
+            this.dgv2.Columns[2].Width = 10 * this.dgv1.Width / 100;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.Hide();
             new FrmAdd().ShowDialog();
+            this.Form1_Load(null, null);
             this.Show();
         }
 
@@ -222,6 +233,94 @@ namespace AgileTeamCollab
             }
                 
             
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgv1.DataSource = null;
+                if (txtSearch.Text.ToLower().Trim() != "")
+                {
+                    List<Barang> listFilter = new List<Barang>();
+                    foreach (var item in listBrg)
+                    {
+                        if (txtSearch.Text.ToLower().Trim() == item.Nama.ToLower() || item.Nama.ToLower().Contains(txtSearch.Text.ToLower().Trim()))
+                        {
+                            listFilter.Add(item);
+                        }
+                    }
+                    dgv1.DataSource = listFilter;
+                }
+                else
+                {
+                    dgv1.DataSource = listBrg;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearch_Click(null, null);
+            }
+        }
+
+        private void btnDelListBelanja_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listBelanja.Count != 0)
+                {
+
+                    string n = dgv2.CurrentRow.Cells[0].Value.ToString();
+                    double hrg = Double.Parse(dgv2.CurrentRow.Cells[1].Value.ToString());
+                    int qty = Int32.Parse(dgv2.CurrentRow.Cells[2].Value.ToString());
+
+                    
+                    var c = listBelanja.Find(i => i.Nama == n && i.Harga == hrg && i.Quantity == qty);
+                    if (c != null)
+                    {
+                        listBelanja.Remove(c);
+                    }
+                }
+                dgv2.DataSource = null;
+                dgv2.DataSource = listBelanja;
+                int total = 0;
+                foreach (DataGridViewRow item in dgv2.Rows)
+                {
+                    total += Int32.Parse(item.Cells[2].Value.ToString());
+                }
+                lblJlhBrg.Text = "Jumlah Barang : " + total.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                new FrmAkhirBelanjaan(listBelanja).ShowDialog();
+                this.Form1_Load(null,null);
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

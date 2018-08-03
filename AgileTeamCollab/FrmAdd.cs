@@ -28,10 +28,11 @@ namespace AgileTeamCollab
                         Kode = txtKode.Text,
                         Nama = txtNama.Text,
                         Harga = Double.Parse(txtHarga.Text),
-                        Pajak = Int32.Parse(txtPajak.Text)
+                        Pajak = Decimal.Parse(txtPajak.Text)
                     });
                 }
                 MessageBox.Show("Penambahan Barang Berhasil", this.Text, MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -71,6 +72,14 @@ namespace AgileTeamCollab
         private void btnBatal_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPajak_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',') 
+            {
+                e.Handled = true;
+            }
         }
     }
 }
