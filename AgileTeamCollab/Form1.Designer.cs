@@ -88,6 +88,7 @@
             this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 22;
             this.label3.Text = "%";
+            this.label3.Visible = false;
             // 
             // lblTotal
             // 
@@ -166,6 +167,7 @@
             this.lblPajak.Size = new System.Drawing.Size(58, 17);
             this.lblPajak.TabIndex = 18;
             this.lblPajak.Text = "Pajak :";
+            this.lblPajak.Visible = false;
             // 
             // txtPajakAkhir
             // 
@@ -174,6 +176,7 @@
             this.txtPajakAkhir.Name = "txtPajakAkhir";
             this.txtPajakAkhir.Size = new System.Drawing.Size(52, 22);
             this.txtPajakAkhir.TabIndex = 17;
+            this.txtPajakAkhir.Visible = false;
             this.txtPajakAkhir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPajakAkhir_KeyPress);
             // 
             // dgv1
@@ -194,7 +197,7 @@
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv1.Size = new System.Drawing.Size(775, 233);
             this.dgv1.TabIndex = 16;
-            this.dgv1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellDoubleClick_1);
+            this.dgv1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellDoubleClick);
             // 
             // kd_barang
             // 

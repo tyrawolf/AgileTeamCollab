@@ -80,13 +80,61 @@ namespace AgileTeamCollab
 
         private void dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            int total = 0;
+     
+            dgv2.Columns[0].DataPropertyName = "Nama";
+            dgv2.Columns[1].DataPropertyName = "Harga";
+            dgv2.Columns[2].DataPropertyName = "Quantity";
+
+            
+            foreach (var item in listBrg)
+            {
+                if (item.Kode == dgv1.CurrentCell.Value.ToString())
+                {
+                    int qty = new FrmQuantity().Run();
+                    if (qty != 0)
+                    {
+                        dgv2.DataSource = null;
+                        if (listBelanja.Count != 0)
+                        {
+
+                            var c = listBelanja.Find(i => i.KodeBarang == dgv1.CurrentRow.Cells[0].Value.ToString());
+                            if (c != null)
+                            {
+                                c.Quantity += qty;
+                                dgv2.DataSource = listBelanja;
+                            }
+                            else
+                            {
+                                listBelanja.Add(new Belanja { KodeBarang = item.Kode, Nama = item.Nama, Harga = item.Harga + (item.Harga * (double)item.Pajak / 100), Quantity = qty });
+                                dgv2.DataSource = listBelanja;
+                            }
+                        }
+                        else
+                        {
+                            listBelanja.Add(new Belanja { KodeBarang = item.Kode, Nama = item.Nama, Harga = item.Harga + (item.Harga * (double)item.Pajak / 100), Quantity = qty });
+                            dgv2.DataSource = listBelanja;
+                        }
+                    }
+                }
+            }
+
+
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                total += Int32.Parse(item.Cells[2].Value.ToString());
+            }
+            lblJlhBrg.Text = "Jumlah Barang : " + total.ToString();
+
+
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtPajakAkhir.Text.Trim() != "")
+                //if (txtPajakAkhir.Text.Trim() != "")
                 {
                     double TotalHarga = 0;
                     foreach (DataGridViewRow item in dgv2.Rows)
@@ -94,14 +142,14 @@ namespace AgileTeamCollab
                         TotalHarga += (Double.Parse(item.Cells[1].Value.ToString()) * Double.Parse(item.Cells[2].Value.ToString()));
                     }
 
-                    TotalHarga = TotalHarga + (TotalHarga * Double.Parse(txtPajakAkhir.Text) / 100);
+                    //tTotalHarga = TotalHarga + (TotalHarga * Double.Parse(txtPajakAkhir.Text) / 100);
 
                     txtTotal.Text = TotalHarga.ToString("n0");
                 }
-                else
-                {
-                    MessageBox.Show("Tolong input pajak akhir !", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                //else
+                //{
+                //    MessageBox.Show("Tolong input pajak akhir !", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
 
             }
             catch (Exception ex)
@@ -150,57 +198,7 @@ namespace AgileTeamCollab
             }
         }
 
-        private void dgv1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int total = 0;
-            dgv2.Columns[0].DataPropertyName = "Nama";
-            dgv2.Columns[1].DataPropertyName = "Harga";
-            dgv2.Columns[2].DataPropertyName = "Quantity";
-
-
-            foreach (var item in listBrg)
-            {
-                if (item.Kode == dgv1.CurrentCell.Value.ToString())
-                {
-                    int qty = new FrmQuantity().Run();
-                    if (qty != 0)
-                    {
-                        dgv2.DataSource = null;
-                        if (listBelanja.Count != 0)
-                        {
-                            foreach (var blnja in listBelanja)
-                            {
-                                if (blnja.KodeBarang == dgv1.CurrentRow.Cells[0].Value.ToString())
-                                {
-                                    blnja.Quantity += qty;
-                                    dgv2.DataSource = listBelanja;
-                                    break;
-                                }
-                                else
-                                {
-                                    listBelanja.Add(new Belanja { KodeBarang = item.Kode, Nama = item.Nama, Harga = item.Harga + (item.Harga * (double)item.Pajak / 100), Quantity = qty });
-                                    dgv2.DataSource = listBelanja;
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            listBelanja.Add(new Belanja { KodeBarang = item.Kode, Nama = item.Nama, Harga = item.Harga + (item.Harga * (double)item.Pajak / 100), Quantity = qty });
-                            dgv2.DataSource = listBelanja;
-                        }
-                    }
-                }
-            }
-
-
-            foreach (DataGridViewRow item in dgv2.Rows)
-            {
-                total += Int32.Parse(item.Cells[2].Value.ToString());
-            }
-            lblJlhBrg.Text = "Jumlah Barang : " + total.ToString();
-
-        }
+      
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
