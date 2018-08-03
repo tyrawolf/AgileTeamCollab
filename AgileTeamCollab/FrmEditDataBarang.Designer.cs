@@ -67,6 +67,7 @@
             this.txtKode.Location = new System.Drawing.Point(161, 21);
             this.txtKode.Margin = new System.Windows.Forms.Padding(4);
             this.txtKode.Name = "txtKode";
+            this.txtKode.ReadOnly = true;
             this.txtKode.Size = new System.Drawing.Size(132, 22);
             this.txtKode.TabIndex = 15;
             // 

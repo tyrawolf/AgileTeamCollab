@@ -200,5 +200,29 @@ namespace AgileTeamCollab
             lblJlhBrg.Text = "Jumlah Barang : " + total.ToString();
 
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (this.dgv1.SelectedRows.Count > 0)
+                {
+                    FrmEditDataBarang form = new FrmEditDataBarang(this.dgv1.CurrentRow.Cells[0].Value.ToString().Trim());
+                    if (form.Run(form))
+                    {
+                        Form1_Load(null,null);
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;   
+            }
+                
+            
+        }
     }
 }
