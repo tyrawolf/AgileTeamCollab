@@ -41,6 +41,10 @@
             this.lblPajak = new System.Windows.Forms.Label();
             this.txtPajakAkhir = new System.Windows.Forms.TextBox();
             this.dgv1 = new System.Windows.Forms.DataGridView();
+            this.kd_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -49,10 +53,6 @@
             this.btnDelListBelanja = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.kd_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
@@ -191,9 +191,34 @@
             this.dgv1.MultiSelect = false;
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
+            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv1.Size = new System.Drawing.Size(775, 233);
             this.dgv1.TabIndex = 16;
             this.dgv1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellDoubleClick_1);
+            // 
+            // kd_barang
+            // 
+            this.kd_barang.HeaderText = "KodeBarang";
+            this.kd_barang.Name = "kd_barang";
+            this.kd_barang.ReadOnly = true;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // Harga
+            // 
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            this.Harga.ReadOnly = true;
+            // 
+            // Pajak
+            // 
+            this.Pajak.HeaderText = "Pajak (%)";
+            this.Pajak.Name = "Pajak";
+            this.Pajak.ReadOnly = true;
             // 
             // btnEdit
             // 
@@ -204,6 +229,7 @@
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -274,30 +300,6 @@
             this.label4.Size = new System.Drawing.Size(486, 17);
             this.label4.TabIndex = 30;
             this.label4.Text = "        Double Click pada kolom KodeBarang untuk menambah daftar belanja.";
-            // 
-            // kd_barang
-            // 
-            this.kd_barang.HeaderText = "KodeBarang";
-            this.kd_barang.Name = "kd_barang";
-            this.kd_barang.ReadOnly = true;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Harga
-            // 
-            this.Harga.HeaderText = "Harga";
-            this.Harga.Name = "Harga";
-            this.Harga.ReadOnly = true;
-            // 
-            // Pajak
-            // 
-            this.Pajak.HeaderText = "Pajak (%)";
-            this.Pajak.Name = "Pajak";
-            this.Pajak.ReadOnly = true;
             // 
             // Form1
             // 
