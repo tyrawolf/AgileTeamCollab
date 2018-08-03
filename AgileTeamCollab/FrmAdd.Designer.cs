@@ -46,6 +46,7 @@
             // 
             this.txtKode.Location = new System.Drawing.Point(150, 27);
             this.txtKode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKode.MaxLength = 4;
             this.txtKode.Name = "txtKode";
             this.txtKode.Size = new System.Drawing.Size(132, 22);
             this.txtKode.TabIndex = 0;
@@ -65,6 +66,7 @@
             // 
             this.txtPajak.Location = new System.Drawing.Point(150, 145);
             this.txtPajak.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPajak.MaxLength = 5;
             this.txtPajak.Name = "txtPajak";
             this.txtPajak.Size = new System.Drawing.Size(88, 22);
             this.txtPajak.TabIndex = 3;
@@ -108,6 +110,7 @@
             // 
             this.txtNama.Location = new System.Drawing.Point(150, 63);
             this.txtNama.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNama.MaxLength = 50;
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(132, 22);
             this.txtNama.TabIndex = 1;
