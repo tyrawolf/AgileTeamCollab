@@ -116,6 +116,7 @@ namespace AgileTeamCollab
         {
             try
             {
+                Form1_Load(null,null);
                 dgv2.DataSource = null;
                 lblJlhBrg.Text = "Jumlah Barang : 0";
                 txtPajakAkhir.Clear();
