@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamCollab", "AgileTea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamCollabLibrary", "AgileTeamCollabLibrary\AgileTeamCollabLibrary.csproj", "{043A4CF9-871E-4B41-90E0-9707023500FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamCollabLibraryTests", "AgileTeamCollabLibraryTests2\AgileTeamCollabLibraryTests.csproj", "{B112CD9C-C405-4EF2-BB06-174A249BC460}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{043A4CF9-871E-4B41-90E0-9707023500FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{043A4CF9-871E-4B41-90E0-9707023500FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{043A4CF9-871E-4B41-90E0-9707023500FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B112CD9C-C405-4EF2-BB06-174A249BC460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B112CD9C-C405-4EF2-BB06-174A249BC460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B112CD9C-C405-4EF2-BB06-174A249BC460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B112CD9C-C405-4EF2-BB06-174A249BC460}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,59 +66,6 @@ namespace AgileTeamCollabLibrary
             return list;
         }
 
-        public List<Barang> QueryDataBarang(Barang barang)
-        {
-            List<Barang> listData = null;
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    if (barang == null)
-                    {
-                        cmd.CommandText =
-                            @"select * from Barang order by kode";
-                    }
-                    else
-                    {
-                        cmd.CommandText =
-                            @"select b.* from barang b 
-                                where b.kode like @kode and b.nama like @nama and
-                                b.harga like @harga and b.pajak like @pajak 
-                                order by kode";
-                        cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@kode", $"%{barang.Kode}%");
-                        cmd.Parameters.AddWithValue("@nama", $"%{barang.Nama}%");
-                        cmd.Parameters.AddWithValue("@Harga", $"%{barang.Harga}%");
-                        cmd.Parameters.AddWithValue("@pajak", $"%{barang.Pajak}%");
-                    }
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            listData = new List<Barang>();
-                            while (reader.Read())
-                            {
-                                listData.Add(
-                                    new Barang
-                                    {
-                                        Kode = reader["kode"].ToString(),
-                                        Nama = reader["nama"].ToString(),
-                                        Harga = Double.Parse(reader["harga"].ToString()),
-                                        Pajak = Int32.Parse(reader["pajak"].ToString())
-                                    });
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return listData;
-        }
-
         public int Update(Barang barang)
         {
             int result = 0;

@@ -40,7 +40,7 @@ namespace AgileTeamCollab
             }
         }
 
-        private void btnSimpan_Click(object sender, EventArgs e)
+        private void btnSimpan_Click_1(object sender, EventArgs e)
         {
             if (this.txtNama.Text.Trim() == "")
             {
@@ -57,7 +57,7 @@ namespace AgileTeamCollab
                 MessageBox.Show("Sorry, data Satuan tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtPajak.Focus();
             }
-            else if (Int32.Parse(this.txtPajak.Text.Trim()) < 0)
+            else if (Decimal.Parse(this.txtPajak.Text.Trim()) < 0)
             {
                 MessageBox.Show("Sorry, data Stok tidak boleh Minus ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtPajak.Focus();
@@ -88,9 +88,46 @@ namespace AgileTeamCollab
             }
         }
 
-        private void btnBatal_Click(object sender, EventArgs e)
+        private void btnBatal_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtHarga_TextChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // Convert 1000 => 1.000
+                if (this.txtHarga.Text.Trim() != "")
+                {
+                    if (double.TryParse(this.txtHarga.Text, out double result))
+                    {
+                        this.txtHarga.Text = result.ToString("n0");
+                        this.txtHarga.SelectionStart = this.txtHarga.Text.Length;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void txtPajak_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
